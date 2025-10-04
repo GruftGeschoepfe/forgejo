@@ -23,6 +23,7 @@ helmcharts:
 
 resources:
   - namespace.yaml
+  - cnpg-forgejo.yaml
 
 patches:
   - path: patch-delete-valkey-secret.yaml

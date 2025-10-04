@@ -180,7 +180,7 @@ spec:
   template:
     metadata:
       annotations:
-        checksum/config: 5c435511eb2653d4dfac537f2d0e02e1711949f68e33e3c614e18f1bfef368bc
+        checksum/config: c730efed57addc0bc0271a4b9e1c9d0e959d7b5ba3a034e3d78970155d6f4396
       labels:
         app: forgejo
         app.kubernetes.io/instance: forgejo
@@ -470,3 +470,21 @@ spec:
       resources:
         requests:
           storage: 8Gi
+---
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: cnpg-forgejo
+  namespace: forgejo
+spec:
+  bootstrap:
+    initdb:
+      database: forgejo
+      owner: forgejo
+      secret:
+        name: cnpg-forgejo-app-user
+  instances: 3
+  storage:
+    size: 10Gi
+  superuserSecret:
+    name: cnpg-forgejo-superuser

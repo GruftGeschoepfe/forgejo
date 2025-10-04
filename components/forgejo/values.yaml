@@ -1,4 +1,5 @@
 # https://code.forgejo.org/forgejo-helm/forgejo-helm/src/branch/main/values.yaml
+# https://forgejo.org/docs/latest/admin/config-cheat-sheet
 
 #clusterDomain: irminsul
 
@@ -15,8 +16,10 @@ service:
 persistence:
   storageClass: cephfs
 
-# a large part of this just gets patched out (all the config in secrets, so hot right now)
-# but just for reference in case we want to deactivate the delete patches for debugging
+# most of this just gets patched out (all the config in secrets, so hot right now),
+# because we maintain the secrets separately
+# but just for reference in case we want to deactivate the delete patches
+# for debugging/reconfiguration:
 gitea:
   admin:
     existingSecret: forgejo-admin-secret
@@ -25,6 +28,14 @@ gitea:
     APP_NAME: "The Ebon Enginarium: Dark Dreams Deprave Decrepit Dungeon Dwelling Developer."
     server:
       DOMAIN: forgejo.irminsul
+    database:
+      DB_TYPE: postgres
+      HOST: cnpg-forgejo-rw:5432
+      USER: forgejo
+      PASSWD: PASSWORD_GOES_HERE
+      # These sound neat, we should try out reading from the standby
+      #HOST_PRIMARY
+      #HOST_REPLICAS
     # we can pass passwords for valkey in the connection string e.g.:
     # redis://password123@valkey:6379/0?
     queue:
@@ -35,7 +46,7 @@ gitea:
       HOST: redis://valkey:6379/1
     session:
       PROVIDER: redis
-      PROVIDER_CONFIG: redis://valeky:6379/2
+      PROVIDER_CONFIG: redis://valkey:6379/2
   ui:
     DEFAULT_THEME: forgejo-dark
     # CUSTOM_EMOJIS: todo
