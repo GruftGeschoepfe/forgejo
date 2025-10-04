@@ -31,6 +31,7 @@ gitea:
     database:
       DB_TYPE: postgres
       HOST: cnpg-forgejo-rw:5432
+      NAME: forgejo
       USER: forgejo
       PASSWD: PASSWORD_GOES_HERE
       # These sound neat, we should try out reading from the standby
