@@ -6,11 +6,11 @@ service:
   http:
     type: LoadBalancer
     annotations:
-      kube-vip.io/loadbalancerIPs: 192.168.250.6
+      kube-vip.io/loadbalancerIPs: 192.168.13.6
   ssh:
     type: LoadBalancer
     annotations:
-      kube-vip.io/loadbalancerIPs: 192.168.250.6
+      kube-vip.io/loadbalancerIPs: 192.168.13.6
 
 persistence:
   storageClass: cephfs
