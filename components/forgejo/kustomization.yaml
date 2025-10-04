@@ -11,7 +11,7 @@ helmcharts:
     repo: oci://code.forgejo.org/forgejo-helm
     version: 14.0.2
     releaseName: forgejo
-    valuesFile: values.yaml
+    valuesFile: values-forgejo.yaml
   # https://artifacthub.io/packages/helm/cloudpirates-valkey/valkey
   # https://github.com/CloudPirates-io/helm-charts/tree/main/charts/valkey
   - name: valkey

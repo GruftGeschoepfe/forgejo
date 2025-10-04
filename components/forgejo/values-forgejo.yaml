@@ -36,6 +36,13 @@ gitea:
       # These sound neat, we should try out reading from the standby
       #HOST_PRIMARY
       #HOST_REPLICAS
+    indexer:
+      ISSUE_INDEXER_TYPE: bleve
+      REPO_INDEXER_ENABLED: true
+      REPO_INDEXER_TYPE: bleve
+      #REPO_INDEXER_EXCLUDE_VENDORED: true
+      # max  size in bytes of files to be indexed, default is 1MiB
+      #MAX_FILE_SIZE: 1048576
     # we can pass passwords for valkey in the connection string e.g.:
     # redis://password123@valkey:6379/0?
     queue:
